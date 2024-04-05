@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+        <Button
+                x:Name="CounterBtn"
+                Text="Fill Items" 
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="Ten"
+                Text="Ten" 
+                Clicked="Ten_Clicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="Five"
+                Text="Five" 
+                Clicked="Five_Clicked"
+                HorizontalOptions="Fill" />
+
+            <CollectionView x:Name="list" Grid.Column="1"
+                                ItemSizingStrategy="MeasureFirstItem"
+                ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border HeightRequest="40">
+                            <Label Text="{Binding}"/>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="5" />
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
