@@ -1,5 +1,6 @@
 ﻿using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace MauiApp1
 {
@@ -18,6 +19,15 @@ namespace MauiApp1
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            //layout.Children.Remove(list);
+
+            //layout.Children.Add(list);
+
+            Items.Clear();
+            //list.ItemsLayout = new GridItemsLayout(5, ItemsLayoutOrientation.Vertical);
 
             for (int row = 0; row < 15; row++)
             {
@@ -26,6 +36,12 @@ namespace MauiApp1
                     Items.Add($"{row}:{col}");
                 }
             }
+
+            stopwatch.Stop();
+            Trace.WriteLine($"Took: {stopwatch.Elapsed}");
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         private void Ten_Clicked(object sender, EventArgs e)

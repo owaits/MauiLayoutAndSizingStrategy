@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp1"
              x:Class="MauiApp1.MainPage">
 
-    <ScrollView>
-
-        <VerticalStackLayout
+    <VerticalStackLayout
+            x:Name="layout"
             Padding="30,0"
             Spacing="25">
         <Button
@@ -14,36 +14,35 @@
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
 
-            <Button
+        <Button
                 x:Name="Ten"
                 Text="Ten" 
                 Clicked="Ten_Clicked"
                 HorizontalOptions="Fill" />
 
-            <Button
+        <Button
                 x:Name="Five"
                 Text="Five" 
                 Clicked="Five_Clicked"
                 HorizontalOptions="Fill" />
 
-            <CollectionView x:Name="list" Grid.Column="1"
+        <CollectionView x:Name="list" Grid.Column="1"
                                 ItemSizingStrategy="MeasureFirstItem"
                 ItemsSource="{Binding Items}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Border HeightRequest="40">
-                            <Label Text="{Binding}"/>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="5" />
-                </CollectionView.ItemsLayout>
-            </CollectionView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <local:NewContent1 />
+                    <!--<Border HeightRequest="40">
+                        <Button Text="{Binding}" Clicked="OnCounterClicked"/>
+                    </Border>-->
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="5" />
+            </CollectionView.ItemsLayout>
+        </CollectionView>
 
 
-        </VerticalStackLayout>
-
-    </ScrollView>
+    </VerticalStackLayout>
 
 </ContentPage>
